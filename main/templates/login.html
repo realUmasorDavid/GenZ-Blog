@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+        src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://kit.fontawesome.com/5c85fd2f27.js" crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'Poppins': ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        "blue": {
+                            250: "#5492dd",
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <title>GenZ Blog</title>
+</head>
+
+<body class="bg-white font-Poppins">
+    <div class="outer flex align-middle h-screen w-screen main">
+
+        <div class="m-auto">
+            <div class="md:bg-gray-200 text-center px-7 md:px-24 py-10 md:border-2 md:border-blue-250 rounded-xl">
+                <h1 class="text-2xl font-bold my-10">Login to <a href="/index.html"><span class="text-blue-250">GenZ
+                            Blog</span></a></h1>
+                <div class="input-form my-8 mx-auto w-full">
+
+
+                    <label class="relative block">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                            <svg class="h-4 w-4" viewBox="0 0 448 512">
+                                <path
+                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
+                            </svg>
+                        </span>
+                        <input
+                            class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                            placeholder="Enter your username:" type="text" name="search" />
+                    </label>
+                </div>
+                <div class="input-form my-8 mx-auto w-full">
+                    <label class="relative block">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </span>
+                        <input
+                            class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                            placeholder="Enter your password:" type="password" name="pass" />
+                    </label>
+                </div>
+                <div class="remember-forgot flex items-center justify-between align-middle -my-1">
+                    <div class="remember hidden md:block flex items-center align-middle ">
+                        <input class="mr-1" type="checkbox" name="" id="">
+                        <label class="text-sm md:text-base" for="">Remember Me</label>
+                    </div>
+                    <div class="forgot">
+                        <label class="text-blue-250 text-sm md:text-base" for="">Forgot Password?</label>
+                    </div>
+                </div>
+                <div class="signup">
+                    <button class="px-28 md:px-40 py-2 rounded-xl bg-blue-250 my-8 text-white font-semibold">Login</button>
+                </div>
+                <div class="flex items-center justify-center align-middle -mt-3 mb-8">
+                    <div class="forgot">
+                        <label for="">Don't have an account? <a href="/signup.html"><span
+                                    class="text-blue-250">Sign Up</span></a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

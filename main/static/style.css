@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syncopate:wght@400;700&display=swap');
+
+.blog-post img {
+    width: 500px;
+    height: 350px;
+}
+
+.profile img, .all_blog_post .profile img {
+    height: 50px;
+    width: 50px;
+    margin: 20px 0;
+}
+
+.all_blog_post img {
+    height: 250px;
+}
+
+.foot {
+    background-color: #f7f9fb;
+    border-top: 1px solid;
+    border-color: #dee0e1;
+}
+
+.boss {
+    background-color: rgb(249, 249, 249);
+    /* justify-content: center; */
+    
+}
+.leo {
+    background-color: rgb(247, 247, 250);
+}
+.hoe {
+    background-color: white;
+}
+.bull{
+    background-color: white;;
+}
+
+/* .foot {
+    background-color: #f7f9fb;
+    border-top: 1px solid;
+    border-color: #dee0e1;
+} */
+
+@media (min-width: 612px) {
+    .all_blog_post {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 30px;
+        /* grid-row-gap: 10px; */
+    }
+}
+
+@media (max-width: 500px) {
+    .blog-post img {
+        height: 150px;
+    }
+}

@@ -1,0 +1,178 @@
+{% load static %}
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+        src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://kit.fontawesome.com/5c85fd2f27.js" crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'Poppins': ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        "blue": {
+                            250: "#5492dd",
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>GenZ Blog</title>
+</head>
+
+
+<body class="font-Poppins">
+    <section class="navigation md:sticky top-0 bg-gray-200 flex justify-between items-center align-middle p-7 px-10">
+        <div class="">
+            <h1 class="text-2xl font-semibold uppercase font-Poppins">Gen-Z Investors</h1>
+        </div>
+        <div class="categories">
+            <ul class="flex">
+                <li data-id="All" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">All</li>
+                <li data-id="Design" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Design</li>
+                <li data-id="Film" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Film</li>
+                <li data-id="Tech" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Tech</li>
+                <li data-id="Health" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Health</li>
+                <li data-id="Entertainment" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Entertainment</li>
+                <li data-id="Gaming" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Gaming</li>
+            </ul>
+        </div>
+
+
+        <div>
+            <div class="flex md:order-2">
+                <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
+                    aria-expanded="false"
+                    class="md:hidden text-gray-500 hover:bg-white focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 mr-1">
+                    <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+                    <span class="sr-only">Search</span>
+                </button>
+                <div class="relative hidden md:block">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+
+                        <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+                        <span class="sr-only">Search icon</span>
+                    </div>
+                    <input type="text" id="search-navbar"
+                        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-white rounded-lg bg-bg-white focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Search...">
+                </div>
+                <a href="/login.html"><button
+                        class="mx-4 px-6 py-1.5 rounded-lg text-white border-2 border-transparent hover:border-blue-250 hover:bg-transparent hover:text-blue-250 bg-blue-250 ease duration-300">Login</button></a>
+            </div>
+    </section>
+
+
+    <hr>
+
+    <section class="head my-10 pt-5 pb-28">
+        <div class="flex">
+            <h1 class="text-left text-3xl mx-28 mb-10">Latest Post</h1>
+            <!-- <h3 class="font-bold my-4">Help and support the creative community</h3>
+            <h1 class="font-bold my-4 text-6xl">We are Gen-Z Investors</h1>
+            <p class="mx-auto my-5 w-8/12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p> -->
+
+            <!-- <button class="px-6 py-2.5 rounded-lg text-white border-2 border-transparent hover:border-blue-250 hover:bg-transparent hover:text-blue-250 bg-blue-250 ease duration-300">Read Blogs</button> -->
+        </div>
+        <div class="latest">
+            <div class="blog-post flex flex-col md:flex-row justify-center align-middle items-center">
+                <img src="{% static 'hr.jpg' %}" class="blog-img w-5/12 md:w-7/12" alt="Blog Image">
+                <div class="text-overlay text-left md:w-5/12 md:ml-8">
+                    <h6><span class="text-blue-250">Technology</span> - July 3, 2024</h6>
+                    <h2 class="blog-title font-bold tex-xl md:text-4xl my-4">The impact of technology on a workplace: How
+                        technology is changing</h2>
+                    <p class="blog-subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad dolor nisi
+                        fuga omnis, aut quia quas amet reprehenderit consequatur laboriosam totam, eum eos ut minus.
+                        Dolore eveniet harum sit rem.</p>
+                    <div class="profile flex items-center">
+                        <img src="{% static 'profile.jpg' %}" class="profile-pic rounded-full" alt="">
+                        <div class="profile-info mx-5 text-sm">
+                            <h6 class="font-bold">Flying High</h6>
+                            <h6>CEO, GenZ Blog</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="all-posts">
+        <h1 class="text-left text-3xl mx-28 mb-10">All Posts</h1>
+
+        <div class="posts">
+            <div
+                class="all_blog_post grid md:flex-row px-28 items-center align-middle justify-center content-center justify-items-center">
+                {% for blog in blogs %} 
+                <div class="">
+                    
+
+                    <img src="{{ blog.image.url }}" class="blog-img w-full" alt="Blog Image">
+                    <div class="text-overlay text-left">
+                        <h6 class="cat-date mt-6"><span class="text-blue-250">Technology</span> - July 3, 2024</h6>
+                        <h2 class="blog-title font-bold text-xl">{{ blog.title }}</h2>
+                        <p class="blog-subtitle mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Dignissimos similique totam atque, voluptatum eius aut.</p>
+                        <div class="profile flex items-center">
+                            <img src="{% static 'profile.jpg' %}" class="profile-pic rounded-full" alt="">
+                            <div class="profile-info mx-5 text-sm">
+                                <h6 class="font-bold">Flying High</h6>
+                                <h6>CEO, GenZ Blog</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-200">
+        <div class="foot one flex p-10 justify-between">
+            <div class="cat">
+                <ul class="flex">
+                    <li data-id="All" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">All</li>
+                <li data-id="Design" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Design</li>
+                <li data-id="Film" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Film</li>
+                <li data-id="Tech" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Tech</li>
+                <li data-id="Health" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Health</li>
+                <li data-id="Entertainment" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Entertainment</li>
+                <li data-id="Gaming" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Gaming</li>
+                </ul>
+            </div>
+            <div class="socials">
+                <i class="fa-brands fa-x-twitter mx-4"></i>
+                <i class="fa-brands fa-linkedin-in mx-4"></i>
+                <i class="fa-brands fa-instagram mx-4"></i>
+                <i class="fa-brands fa-facebook-f mx-4"></i>
+                <i class="fa-brands fa-youtube mx-4"></i>
+            </div>
+        </div>
+
+        <div class="foot two p-10 text-center">
+            <h1 class="font-bold">Sign up to receive emails updates, fresh news and more!</h1>
+            <div class="email my-4">
+                <input type="email" placeholder="Enter your email" class="w-96 border-gray-250 py-2">
+                <button
+                    class="mx-4 px-6 py-2 rounded-lg text-white border-2 border-transparent hover:border-blue-250 hover:bg-transparent hover:text-blue-250 bg-blue-250 ease duration-300">Subscribe</button>
+            </div>
+        </div>
+
+        <div class="foot three p-10 text-center">
+            <p>Copyright © 2024 GenZ Blog | Powered by GenZ Blog</p>
+        </div>
+    </section>
+</body>
+<!-- <script src="/blogData/main.js"></script> -->
+
+</html>
