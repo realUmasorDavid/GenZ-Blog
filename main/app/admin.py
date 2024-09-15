@@ -10,8 +10,8 @@ class BlogAdmin(admin.ModelAdmin):
     list_filter = ['created_at']
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'comment', 'created_at']
-    search_fields = ['id', 'comment', 'content']
+    list_display = ['id', 'commentFromBlog', 'commentDetail', 'created_at']
+    search_fields = ['id', 'commentDetail']
     readonly_fields = ['created_at']
     list_filter = ['created_at']
 
@@ -26,6 +26,12 @@ class NewsLetterAdmin(admin.ModelAdmin):
     search_fields = ['id', 'email']
     readonly_fields = ['created_at']
 
+class TestCommentAdmin(admin.ModelAdmin):
+    list_display = ['comment', 'created_at']
+    search_fields = ['comment', 'created_at']
+    readonly_fields = ['created_at']
+
+admin.site.register(TestComment, TestCommentAdmin)
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Like, LikeAdmin)

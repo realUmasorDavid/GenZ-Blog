@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,26 +10,68 @@
     <script src="https://kit.fontawesome.com/5c85fd2f27.js" crossorigin="anonymous"></script>
     <script
         src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://kit.fontawesome.com/5c85fd2f27.js" crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'Poppins': ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        "blue": {
+                            250: "#5492dd",
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="output.css">
     <link rel="stylesheet" href="style.css">
     <title>Genz Blog</title>
 </head>
 
 <body>
-    <section class="md:block hidden boss">
-        <header class="pt-10 flex ">
-            <h1 class="text-4xl font-bold ml-[5rem] ">GEN-Z INVESTORS</h1>
-            <div class=" space-x-10 items-center ml-[8rem] pt-3">
-                <a href="" class="">Design</a>
-                <a href="" class="">Film</a>
-                <a href="">Advertisment</a>
-                <a href="">Digital</a>
-                <a href="">Entertainment</a>
-                <a href="">Gaming</a>
+    <section class="navigation md:sticky top-0 bg-gray-200 flex justify-between items-center align-middle p-7 px-10">
+        <div class="">
+            <h1 class="text-2xl font-semibold uppercase font-Poppins">Gen-Z Investors</h1>
+        </div>
+        <div class="categories">
+            <ul class="flex">
+                <li data-id="All" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">All</li>
+                <li data-id="Design" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Design</li>
+                <li data-id="Film" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Film</li>
+                <li data-id="Tech" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Tech</li>
+                <li data-id="Health" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Health</li>
+                <li data-id="Entertainment" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">
+                    Entertainment</li>
+                <li data-id="Gaming" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Gaming</li>
+            </ul>
+        </div>
+
+
+        <div>
+            <div class="flex md:order-2">
+                <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
+                    aria-expanded="false"
+                    class="md:hidden text-gray-500 hover:bg-white focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 mr-1">
+                    <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+                    <span class="sr-only">Search</span>
+                </button>
+                <div class="relative hidden md:block">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+
+                        <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+                        <span class="sr-only">Search icon</span>
+                    </div>
+                    <input type="text" id="search-navbar"
+                        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-white rounded-lg bg-bg-white focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Search...">
+                </div>
+                <a href="/login.html"><button
+                        class="mx-4 px-6 py-1.5 rounded-lg text-white border-2 border-transparent hover:border-blue-250 hover:bg-transparent hover:text-blue-250 bg-blue-250 ease duration-300">Login</button></a>
             </div>
-            <i class="bi bi-search ml-[10rem] pt-4 "></i>
-            <button class=" bg-blue-400 font-bold w-[8rem] h-[3.5rem] rounded-lg ml-[2rem] text-white">Login</button>
-        </header>
     </section>
 
     <section class="md:hidden block boss">
@@ -65,16 +109,16 @@
         <section class=" pt-5 mx-auto ml-[14rem] md:block hidden">
             <div class="h-[80rem] w-[65rem] hoe ">
                 <div class="ml-10 pt-5">
-                    <h1 class="text-2xl font-semibold">10 super awesome illustrations to be inspired by</h1>
+                    <h1 class="text-2xl font-semibold">{{ model.title }}</h1>
 
                     <h1 class="pt-2">Leave a Comment / Design / By Gen-Z</h1>
                 </div>
 
                 <div class="flex ml-10 pt-2">
-                    <img src="hr.jpg" class="w-[60rem] h-[37rem] my-4" alt="">
+                    <img src="{{ model.image.url }}" class="w-[60rem] h-[37rem] my-4" alt="">
                 </div>
 
-                <div class="pt-5 ml-10">
+                <!-- <div class="pt-5 ml-10">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit voluptate velit esse cillum
@@ -104,10 +148,12 @@
                         id est laborum
                     </li>
                 </div>
-            </div>
+            </div> -->
+
+            <p class="pt-5 ml-10">{{ model.content }}</p>
         </section>
 
-        <section class="pt-5 ">
+        <!-- <section class="pt-5 ">
             <section class="md:hidden block bull h-[80rem] w-[38rem] justify-center ml-3 pt-[5rem]">
                 <div class="">
                     <h1 class="text-2xl font-semibold ml-4 ">10 super awesome illustrations to be inspired by</h1>
@@ -152,6 +198,45 @@
                     </li>
 
             </section>
+        </section> -->
+
+        <section class="comment max-w-2xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg lg:text-2xl font-bold text-gray-900 text-black">Discussion (20)</h2>
+            </div>
+            <form class="mb-6">
+                <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                    <label for="comment" class="sr-only">Your comment</label>
+                    <textarea id="comment" rows="6"
+                        class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                        placeholder="Write a comment..." required></textarea>
+                </div>
+                <button type="submit"
+                    class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-250 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                    Post comment
+                </button>
+            </form>
+        </section>
+
+        <section>
+            <div class="p-6">
+                <h2 class="text-lg font-bold mb-4">Comments</h2>
+                {% for comment in comments %}
+                <div class="flex flex-col my-4">
+    
+                    <div class="bg-white p-4 rounded-lg shadow-lg">
+    
+                        <h3 class="text-lg font-bold">{{ comment.name }}</h3>
+                        <p class="text-gray-700 text-sm mb-2">Blog: {{ comment.commentFromBlog }}</p>
+                        <p class="text-gray-700 text-sm mb-2">{{ comment.created_at }}</p>
+                        <p class="text-gray-700">{{ comment.commentDetail }}
+                        </p>
+                    </div>
+    
+    
+                </div>
+                {% endfor %}
+            </div>
         </section>
 
         <section class="flex ">
@@ -198,6 +283,7 @@
                         class="mx-4 px-6 py-2 rounded-lg text-white border-2 border-transparent hover:border-blue-250 hover:bg-transparent hover:text-blue-250 bg-blue-250 ease duration-300">Subscribe</button>
                 </div>
             </div>
+            
 
             <div class="foot three p-10 text-center">
                 <p>Copyright © 2024 GenZ Blog | Powered by Gen-Z Blog</p>

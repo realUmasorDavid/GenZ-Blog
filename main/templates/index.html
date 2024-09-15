@@ -42,7 +42,8 @@
                 <li data-id="Film" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Film</li>
                 <li data-id="Tech" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Tech</li>
                 <li data-id="Health" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Health</li>
-                <li data-id="Entertainment" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Entertainment</li>
+                <li data-id="Entertainment" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">
+                    Entertainment</li>
                 <li data-id="Gaming" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Gaming</li>
             </ul>
         </div>
@@ -88,7 +89,8 @@
                 <img src="{% static 'hr.jpg' %}" class="blog-img w-5/12 md:w-7/12" alt="Blog Image">
                 <div class="text-overlay text-left md:w-5/12 md:ml-8">
                     <h6><span class="text-blue-250">Technology</span> - July 3, 2024</h6>
-                    <h2 class="blog-title font-bold tex-xl md:text-4xl my-4">The impact of technology on a workplace: How
+                    <h2 class="blog-title font-bold tex-xl md:text-4xl my-4">The impact of technology on a workplace:
+                        How
                         technology is changing</h2>
                     <p class="blog-subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad dolor nisi
                         fuga omnis, aut quia quas amet reprehenderit consequatur laboriosam totam, eum eos ut minus.
@@ -110,16 +112,16 @@
         <div class="posts">
             <div
                 class="all_blog_post grid md:flex-row px-28 items-center align-middle justify-center content-center justify-items-center">
-                {% for blog in blogs %} 
+                {% for blog in blogs %}
                 <div class="">
-                    
 
-                    <img src="{{ blog.image.url }}" class="blog-img w-full" alt="Blog Image">
+
+                    <a href="/blog/blog/{{ blog.id }}"><img src="{{ blog.image.url }}" class="blog-img w-full"
+                            alt="Blog Image"></a>
                     <div class="text-overlay text-left">
                         <h6 class="cat-date mt-6"><span class="text-blue-250">Technology</span> - July 3, 2024</h6>
                         <h2 class="blog-title font-bold text-xl">{{ blog.title }}</h2>
-                        <p class="blog-subtitle mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Dignissimos similique totam atque, voluptatum eius aut.</p>
+                        <p class="blog-subtitle mt-3">{{ blog.previewContent }}</p>
                         <div class="profile flex items-center">
                             <img src="{% static 'profile.jpg' %}" class="profile-pic rounded-full" alt="">
                             <div class="profile-info mx-5 text-sm">
@@ -131,9 +133,32 @@
                 </div>
                 {% endfor %}
 
-                
+
 
             </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="p-6">
+            <h2 class="text-lg font-bold mb-4">Comments</h2>
+            {% for comment in comments %}
+            <div class="flex flex-col my-4">
+
+                <a href="/comment">
+                    <div class="bg-white p-4 rounded-lg shadow-lg">
+
+                        <h3 class="text-lg font-bold">{{ comment.name }}</h3>
+                        <p class="text-gray-700 text-sm mb-2">Blog: {{ comment.commentFromBlog }}</p>
+                        <p class="text-gray-700 text-sm mb-2">{{ comment.created_at }}</p>
+                        <p class="text-gray-700">{{ comment.commentDetail }}
+                        </p>
+                    </div>
+                </a>
+
+
+            </div>
+            {% endfor %}
         </div>
     </section>
 
@@ -142,12 +167,13 @@
             <div class="cat">
                 <ul class="flex">
                     <li data-id="All" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">All</li>
-                <li data-id="Design" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Design</li>
-                <li data-id="Film" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Film</li>
-                <li data-id="Tech" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Tech</li>
-                <li data-id="Health" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Health</li>
-                <li data-id="Entertainment" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Entertainment</li>
-                <li data-id="Gaming" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Gaming</li>
+                    <li data-id="Design" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Design</li>
+                    <li data-id="Film" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Film</li>
+                    <li data-id="Tech" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Tech</li>
+                    <li data-id="Health" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Health</li>
+                    <li data-id="Entertainment" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">
+                        Entertainment</li>
+                    <li data-id="Gaming" class="mx-4 hover:text-blue-250 ease duration-800 cursor-pointer">Gaming</li>
                 </ul>
             </div>
             <div class="socials">
